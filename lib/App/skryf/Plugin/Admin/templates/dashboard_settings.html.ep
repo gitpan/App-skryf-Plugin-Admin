@@ -1,0 +1,26 @@
+% layout 'auth';
+%= t 'div', id => 'admin-body' => begin
+  %= t 'h2' => 'Site Settings'
+  % if (my $msg = flash 'message') {
+    <h4><%= $msg %></h4>
+  % }
+  %= form_for url_for("admin_dashboard_settings") => ( method => 'POST' ) => begin
+    %= t 'span' => 'URL'
+    %= text_field 'site', type => 'text', class => 'form-control', placeholder => 'http://skryf.astokes.org', value => $siteconf->{site}
+    %= t 'span' => 'Title'
+    %= text_field 'title', type => 'text', class => 'form-control', placeholder => 'Skryf', value => $siteconf->{title}
+    %= t 'span' => 'Author'
+    %= text_field 'author', type => 'text', class => 'form-control', placeholder => 'Adam Stokes', value => $siteconf->{author}
+    %= t 'span' => 'Email'
+    %= text_field 'email', type => 'text', class => 'form-control', placeholder => 'adamjs@cpan.org', value => $userconf->{email}
+    %= t 'span' => 'Password'
+    %= password_field 'password', class => 'form-control', value => $userconf->{password}, placeholder => 'Your login password'
+    %= t 'span' => 'Description'
+    %= text_field 'description', type => 'text', class => 'form-control', placeholder => 'so happy!', value => $siteconf->{description}
+    %= t 'span' => 'Timezone'
+    %= text_field 'tz', type => 'text', class => 'form-control', value => $siteconf->{tz}
+    %= t 'span' => 'Secret'
+    %= text_field 'secret', type => 'text', class => 'form-control', placeholder => 'Put something random, you dont have to remember it', value => $siteconf->{secret}
+    %= submit_button 'Save Settings', class => 'btn'
+  %= end
+%= end

@@ -1,0 +1,22 @@
+%= t 'div', id => 'navbar' => begin
+<div class="links">
+  %= link_to 'View Site' => url_for('splashpage')
+</div>
+%= end
+<div id="navbar-sub">
+  <div class="links">
+
+    <ul>
+      <li class="item-header">
+	%= t 'img', src => '/images/skryf-logo.png', height => '58', width => '104'
+      </li>
+        <ul class="item-list">
+          % foreach my $item (sort(@{app->admin_menu})) {
+          <li>
+            %= link_to $item->{menu}{name} => url_for($item->{menu}{action})
+          </li>
+          % }
+        </ul>
+    </ul>
+  </div>
+</div>

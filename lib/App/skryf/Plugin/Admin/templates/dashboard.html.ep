@@ -1,0 +1,5 @@
+% layout 'auth';
+%= t 'div', class  => 'post-body' => begin
+  %= t 'h2' => 'Dashboard'
+  %= link_to "Settings" => url_for('admin_dashboard_settings') => class => 'btn'
+%= end
